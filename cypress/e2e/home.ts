@@ -6,5 +6,9 @@ describe('Cypress TS', () => {
     cy.visit('/')
 
     cy.shouldRenderBanner()
+    cy.shouldRenderShowcase({ name: 'New Games' })
+    cy.shouldRenderShowcase({ name: 'Most Popular Games', highlight: true })
+    cy.shouldRenderShowcase({ name: 'Upcoming Games', highlight: true })
+    cy.shouldRenderShowcase({ name: 'Free Games', highlight: true })
   })
 })
