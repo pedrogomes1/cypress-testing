@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 ///<reference path="../support/index.d.ts" />
 
-describe('Cypress TS', () => {
+describe.skip('Home page', () => {
   it('should render home sections', () => {
     cy.visit('/')
 
-    cy.shouldRenderBanner()
+    // cy.shouldRenderBanner()
     cy.shouldRenderShowcase({ name: 'New Games' })
     cy.shouldRenderShowcase({ name: 'Most Popular Games', highlight: true })
     cy.shouldRenderShowcase({ name: 'Upcoming Games', highlight: true })
