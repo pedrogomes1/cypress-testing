@@ -10,6 +10,12 @@ type FieldsAttributes = {
   label: string
   name: string | number
 }[]
+
+type User = {
+  username: string
+  email: string
+  password: string
+}
 declare namespace Cypress {
   interface Chainable<> {
     /**
@@ -60,5 +66,12 @@ declare namespace Cypress {
      */
 
     shouldRenderShowcase(attrs: ShowcaseAttributes): Chainable<Element>
+
+    /**
+     * Custom command to signUp user
+     * @example cy.signUp()
+     */
+
+    signUp(user: User): Chainable<Element>
   }
 }
