@@ -24,9 +24,29 @@ describe('Explore page', () => {
     cy.getFields(genresFields)
   })
 
-  it('should show 15 games and show more games when show more is clicked', () => {
+  it.skip('should show 15 games and show more games when show more is clicked', () => {
     cy.getByDataCy('games-card').should('have.length', 15)
     cy.findByRole('button', { name: /show more/i }).click()
     cy.getByDataCy('games-card').should('have.length', 30)
+  })
+
+  it('should order by price', () => {
+    cy.findByText(/lowest to highest/i).click()
+    cy.location('href').should('contain', 'sort=price%3Aasc')
+
+    cy.getByDataCy('games-card')
+      .first()
+      .within(() => {
+        cy.findByText('$0.00').should('exist')
+      })
+
+    cy.findByText(/highest to lowest/i).click()
+    cy.location('href').should('contain', 'sort=price%3Adesc')
+
+    cy.getByDataCy('games-card')
+      .first()
+      .within(() => {
+        cy.shouldBeGreaterThan(0)
+      })
   })
 })
