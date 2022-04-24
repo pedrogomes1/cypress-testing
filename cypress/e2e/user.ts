@@ -4,7 +4,7 @@
 import { createUser } from '../support/generate'
 
 describe('User', () => {
-  it.skip('should sign up', () => {
+  it('should sign up', () => {
     cy.visit('/sign-up')
     const user = createUser()
 
@@ -14,7 +14,7 @@ describe('User', () => {
     cy.findByText(user.username).should('exist')
   })
 
-  it.skip('should sign in and sign out', () => {
+  it('should sign in and sign out', () => {
     cy.visit('/sign-in')
 
     cy.signIn()
@@ -26,5 +26,20 @@ describe('User', () => {
 
     cy.findByRole('link', { name: /sign in/i }).should('exist')
     cy.findByText(/john doe/i).should('not.exist')
+  })
+
+  it('should sign the user and redirect ot the page tha it was defined previously', () => {
+    cy.visit('profile/me')
+
+    cy.location('href').should(
+      'eq',
+      `${Cypress.config().baseUrl}/sign-in?callbackUrl=/profile/me`
+    )
+    cy.signIn()
+
+    cy.location('href').should('eq', `${Cypress.config().baseUrl}/profile/me`)
+
+    cy.findByLabelText(/username/i).should('have.value', 'John doe')
+    cy.findByLabelText(/e-mail/i).should('have.value', 'johndoe@gmail.com')
   })
 })
