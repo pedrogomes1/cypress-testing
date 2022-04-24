@@ -9,5 +9,8 @@ describe('User', () => {
     const user = createUser()
 
     cy.signUp(user)
+
+    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+    cy.findByText(user.username).should('exist')
   })
 })

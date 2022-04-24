@@ -93,7 +93,4 @@ Cypress.Commands.add('signUp', (user) => {
   cy.findByPlaceholderText(/^password/i).type(user.password)
   cy.findByPlaceholderText(/confirm password/i).type(user.password)
   cy.findByRole('button', { name: /sign up/i }).click()
-
-  cy.url().should('eq', `${Cypress.config().baseUrl}/`)
-  cy.findByText(user.username).should('exist')
 })
