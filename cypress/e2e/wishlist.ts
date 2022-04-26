@@ -6,7 +6,6 @@ describe('Wishlist page', () => {
     cy.visit('/wishlist')
 
     cy.signIn()
-    cy.wait(1000)
 
     cy.findByText(/Your wishlist is empty/i).should('exist')
 
@@ -16,7 +15,6 @@ describe('Wishlist page', () => {
         cy.findAllByLabelText(/add to wishlist/i).click()
       })
 
-    cy.wait(300)
     cy.getByDataCy('wishlist').within(() => {
       cy.getByDataCy('games-card').should('have.length', 1)
     })
