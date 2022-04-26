@@ -1,7 +1,8 @@
 
 ## What is inside?
 
-Follow-up of the [end to end testing](https://www.udemy.com/course/cypress-na-pratica/) course with cypress in practice by taught by [Willian Justen](https://github.com/willianjusten)
+Follow-up of the [end to end](https://www.udemy.com/course/cypress-na-pratica/) front end test course with cypress in practice by taught by [Willian Justen](https://github.com/willianjusten)
+
 
 ## :computer: Main technologies used:
 
