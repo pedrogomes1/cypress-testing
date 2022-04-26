@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands'
+import 'cypress-plugin-stripe-elements'
 
 Cypress.Commands.add('google', () => cy.visit('https://www.google.com/'))
 
@@ -98,7 +99,6 @@ Cypress.Commands.add('signUp', (user) => {
 Cypress.Commands.add(
   'signIn',
   (email = 'johndoe@gmail.com', password = '12345678') => {
-    cy.url().should('eq', `${Cypress.config().baseUrl}/sign-in`)
     cy.findAllByPlaceholderText(/email/i).type(email)
     cy.findAllByPlaceholderText(/password/i).type(password)
     cy.findByRole('button', { name: /sign in now/i }).click()
